@@ -11,3 +11,4 @@
 // route since we don't have to scan directories.
 
 $routes->post('auth-secure/login', 'MainController::login', ['namespace' => 'Modules\AuthMe\Controllers']);
+$routes->get('auth-secure/logout', 'MainController::logout', ['namespace' => 'Modules\AuthMe\Controllers']);

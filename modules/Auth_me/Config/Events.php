@@ -38,6 +38,10 @@ use Modules\AuthMe\Controllers\Processor;
 	$processLogin = new Processor;
 	Events::on('processLogin', [$processLogin, 'processLogin']);
 
+	# Logout Processor Event Register
+	$processLogout = new Processor;
+	Events::on('processLogout', [$processLogin, 'processLogout']);
+
 
 
 #~~~~~~~~~~~~~~~AUTH SUCCESS & AUTH ERROR CALLBACK FUNCTIONS~~~~~~~~~~~~~~~~~~~#

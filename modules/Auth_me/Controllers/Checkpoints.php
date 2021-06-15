@@ -24,7 +24,7 @@ class Checkpoints extends Controller
     }
 	
     /**
-     * For login request clarification
+     * For login request clarification (Check if all conditions necessary for login authentication is met)
      */
     public function login()
     {
