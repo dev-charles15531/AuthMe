@@ -61,7 +61,7 @@ class Config extends BaseConfig {
     # Languages used by this module
     # {value} in incorrect_pubKey & incorrect_pvtKey will be substituted with whatever is before the pipe symbol (|)
     public $langs = [
-        'login' => [
+        'admin' => [
             'error'             => 'An error occoured while trying to process your request<br>Please try again.',
             'incorrect_default' => 'The credentials submitted does not match our record.',
             'incorrect_pubKey'  => 'email address|The {value} you submitted does not match our record',
@@ -74,10 +74,11 @@ class Config extends BaseConfig {
 
     # Callbacks
     # Pages or function to call on success or error
+    # Logout should have neither error page nor error function
     public $callbacks = [
-        'login' => [
+        'admin' => [
             'pages' => [
-                'success' => 'successpage',
+                'success' => 'loginsuccesspage',
                 'error'   => 'testlogin',
             ],
 
@@ -87,13 +88,46 @@ class Config extends BaseConfig {
                 'error'     => 'loginErrorFunction',
             ],
         ],
+
+        'logout' => [
+            'pages' => [
+                'success' => 'testlogin',
+            ],
+
+
+            'functions' => [
+                'success'   => 'logoutSuccessFunction',
+            ],
+        ],
     ];
 
 
+
+    # Logout
+    # Configurations for logout based on login constraints
+    public $logout = [
+        'admin' => [
+            'page' => [
+                'success' => 'testlogin',
+            ],
+
+
+            'function' => [
+                'success'   => 'logoutSuccessFunction',
+            ],
+        ],
+    ];
+
+
+
+
     # Session data after successful login
-    # The variable you want to hold session should be the key and session value should point to the db column you 
-    # Default value is = auth_me_session_data
-    public $sessionVar = 'auth_me_session_data';
+    # The login constraint whose session you want to store variable you want to hold session should be the key
+    # The variable name you want to use in storing session data should be the value
+    public $sessionVar = [
+        'admin' => 'admin_session_data'
+    ];
+
 
 }
 

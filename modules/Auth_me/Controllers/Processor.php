@@ -126,11 +126,10 @@ class Processor extends Controller
 		}
 		elseif($loginator == 0) {
 			# Login Successfull
-            $this->session->remove('authMePasser');  //Remove tmp session
-
+            
             $this->session->setTempdata('success', $this->action->getLoginSuccessMssg(), 3);
 
-			$this->session->set($this->action->getSessionVar, $public_key); // Set user session
+			$this->session->set($this->action->getSessionVar(), $public_key); // Set auth passer session
 			# callback function on success
             if (!empty($this->action->getLoignSuccessFunction())) {
                 \Codeigniter\Events\Events::trigger($this->action->getLoignSuccessFunction());
@@ -139,7 +138,26 @@ class Processor extends Controller
             if (!empty($this->action->getLoignSuccessPage())) {
                 $this->response->redirect(site_url($this->action->getLoignSuccessPage()));
             }
-		}
-        
+		}   
+    }
+
+
+
+    /**
+     * Process logout request
+     */
+    public function processLogout()
+    {
+        $this->session->remove($this->action->getSessionVar());  //Remove session data
+        # logout function on success
+        if (!empty($this->action->getLogoutSuccessFunction())) {
+            \Codeigniter\Events\Events::trigger($this->action->getLogoutSuccessFunction());
+        }
+        # logout page on success
+        if (!empty($this->action->getLogoutSuccessPage())) {
+            $this->response->redirect(site_url($this->action->getLogoutSuccessPage()));
+        }
+
+        $this->session->remove('authMePasser');  //Remove tmp session
     }
 }

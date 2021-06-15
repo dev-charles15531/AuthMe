@@ -40,4 +40,13 @@ class MainController extends Controller
 
 	
 
+	/**
+	 * @desc - This method gets called on logout. It calls the logout event
+	 */
+	public function logout()
+	{
+		# Call logout processor event
+        \Codeigniter\Events\Events::trigger('processLogout');
+	}
+
 }

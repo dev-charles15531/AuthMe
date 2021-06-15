@@ -33,13 +33,13 @@ class Actions extends Controller
      */
     public function getErrorMssg()
     {
-        $mssg = $this->config->langs['login']['error'];
+        $mssg = $this->config->langs[$this->session->get('authMePasser')]['error'];
         # Check if the error message is set in config
         if (!empty($mssg)) {
             return $mssg;
         }
         else {
-            throw new \UnexpectedValueException('empty page value for login callback. Please check your config settings');
+            throw new \UnexpectedValueException('empty page value for '.$this->session->get('authMePasser').' callback. Please check your config settings');
         }
         
     }
@@ -56,9 +56,9 @@ class Actions extends Controller
      */
     public function getInvalidKeyMssg(String $key)
     {
-        $defaultMssg = $this->config->langs['login']['incorrect_default'];
-        $publicKeyMssg = $this->config->langs['login']['incorrect_pubKey'];
-        $privateKeyMssg = $this->config->langs['login']['incorrect_pvtKey'];
+        $defaultMssg = $this->config->langs[$this->session->get('authMePasser')]['incorrect_default'];
+        $publicKeyMssg = $this->config->langs[$this->session->get('authMePasser')]['incorrect_pubKey'];
+        $privateKeyMssg = $this->config->langs[$this->session->get('authMePasser')]['incorrect_pvtKey'];
 
         # if values are not set in our config class
         if (empty($defaultMssg) && (empty($publicKeyMssg) || empty($privateKeyMssg))) {
@@ -93,54 +93,59 @@ class Actions extends Controller
 
 
     /**
-     * @desc - This method returns in string format, the login error page
-     * @return String - The login error page
+     * @desc - This method returns in string format, the current passer error page
+     * @return String - The current passer error page
      */
     public function getLoignErrorPage()
     {
-        return $this->config->callbacks['login']['pages']['error'];
+        return $this->config->callbacks[$this->session->get('authMePasser')]['pages']['error'];
     }
 
 
     /**
-     * @desc - This method returns in string format, the login error function
-     * @return String - The login error function
+     * @desc - This method returns in string format, the current passer error function
+     * @return String - The current passer error function
      */
     public function getLoignErrorFunction()
     {
-        return $this->config->callbacks['login']['functions']['error'];
+        return $this->config->callbacks[$this->session->get('authMePasser')]['functions']['error'];
     }
 
 
     /**
-     * @desc - This method returns in string format, the login success page
-     * @return String - The login success page
+     * @desc - This method returns in string format, the current passer success page
+     * @return String - The current passer success page
      */
     public function getLoignSuccessPage()
     {
-        return $this->config->callbacks['login']['pages']['success'];
+        return $this->config->callbacks[$this->session->get('authMePasser')]['pages']['success'];
     }
 
 
     /**
-     * @desc - This method returns in string format, the login error function
-     * @return String - The login success function
+     * @desc - This method returns in string format, the current passer error function
+     * @return String - The current passer success function
      */
     public function getLoignSuccessFunction()
     {
-        return $this->config->callbacks['login']['functions']['success'];
+        return $this->config->callbacks[$this->session->get('authMePasser')]['functions']['success'];
     }
 
 
     /**
      * @desc - This method returns in string format, the session variable name
      * @return String - The variable to hold session data
+     * @throws UnexpectedValueException - If the session variable name is not set in our config class
      */
     public function getSessionVar()
     {
-        $sess_arr = $this->config->sessionVar;
-        foreach ($sess_arr as $key => $value) {
-             return $key;
+        $sess_var = $this->config->sessionVar[$this->session->get('authMePasser')];
+        # Check if the error message is set in config
+        if (!empty($sess_var)) {
+            return $sess_var;
+        }
+        else {
+            throw new \UnexpectedValueException('empty session variable value for '.$this->session->get('authMePasser').'. Please check your config settings');
         }
     }
 
@@ -151,9 +156,8 @@ class Actions extends Controller
      */
     public function getLoginCondition()
     {
-        # Get passer and login constraints for gotten passer
-        $current_passer = $this->session->get('authMePasser');
-        $constraints = $this->config->loginConstraints[$current_passer];
+        # Get login constraints for current passer
+        $constraints = $this->config->loginConstraints[$this->session->get('authMePasser')];
 
         # Array to hold conditions column as set in our Config class
         $conditions = [];
@@ -176,7 +180,7 @@ class Actions extends Controller
     {
         $keys = array_keys($this->getLoginCondition());
         $selected_key = $keys[$index];
-        $error_lang = $this->config->langs['login'][$selected_key];
+        $error_lang = $this->config->langs[$this->session->get('authMePasser')][$selected_key];
         return $error_lang;
     }
 
@@ -187,7 +191,7 @@ class Actions extends Controller
      */
     public function getLoginSuccessMssg()
     {
-        $mssg = $this->config->langs['login']['successful_login'];
+        $mssg = $this->config->langs[$this->session->get('authMePasser')]['successful_login'];
         # Check if the error message is set in config
         if (!empty($mssg)) {
             return $mssg;
@@ -196,4 +200,26 @@ class Actions extends Controller
         #    throw new \UnexpectedValueException('empty value for login success messgae. Please check your config settings');
         #}
     }
+
+
+    /**
+     * @desc - This method returns in string format, the current passer success page on logout
+     * @return String - The current passer success page on logout
+     */
+    public function getLogoutSuccessPage()
+    {
+        return $this->config->logout[$this->session->get('authMePasser')]['page']['success'];
+    }
+
+
+    /**
+     * @desc - This method returns in string format, the current passer on logout function
+     * @return String - The current passer function on logout
+     */
+    public function getLogoutSuccessFunction()
+    {
+        return $this->config->logout[$this->session->get('authMePasser')]['function']['success'];
+    }
+
+
 }
