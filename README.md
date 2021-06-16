@@ -39,14 +39,14 @@ Lightweight & easy to use codeigniter 4 authentication module
 		'?is_active?'     => '1',
     ], 
 	````
-	The above is the format of subarray the $loginConstraints holds. Where, 
-	'users' is the name(any name can be used) holding the sub-configurations of who you want to login.
-	'table' array key will have the value of the database table name of the users (this key & value is required).
-	'public_key' array key will have the value of the table column name from which you want to query form public key (this key & value is required).
-	'private_key' array key will have the value of the table column name from which you want to query form private key (this key & value is required).
-	'?is_active?' array key(in between question marks) is a condition we are setting for login which should be the database column name where the condition should be checked 
-				  and its value must be the column value that satisfies that condition. You can set at most 3 login conditions and must be in the correct format just as you have seen above.
-				  (this key and value is optional).
+	The above is the format of subarray the $loginConstraints holds. Where,<br/> 
+	'users' is the name(any name can be used) holding the sub-configurations of who you want to login.<br/>
+	'table' array key will have the value of the database table name of the users (this key & value is required).<br/>
+	'public_key' array key will have the value of the table column name from which you want to query form public key (this key & value is required).<br/>
+	'private_key' array key will have the value of the table column name from which you want to query form private key (this key & value is required).<br/>
+	'?is_active?' array key(in between question marks) is a condition we are setting for login which should be the database column name where the condition should be checked <br/>
+				  and its value must be the column value that satisfies that condition. You can set at most 3 login conditions and must be in the correct format just as you have seen above.<br/>
+				  (this key and value is optional).<br/>
 				  
 	
 	You can have more than one $loginConstraints, that means you can have for 'users', 'admin', 'moderators'...etc
@@ -63,14 +63,14 @@ Lightweight & easy to use codeigniter 4 authentication module
             'successful_login'  => 'Login details correct, redirecting....',
         ],
 	````
-	The above is the format of subarray the $langs holds. Where, 
-	'users' is the name of the specific login constraint you're setting the languages for.
-	'error' array key will have the value of the error message to display if form http request is not post(this key & value is required).
-	'incorrect_default' array key will have the value of the default error message to display if that of public and private key is not set(this key is required but value can be empty).
-	'incorrect_pubKey' array key will have the value of the error message to display if submitted public key dosent match what's in the database record(this key is required but value can be empty).
-	'incorrect_pvtKey' array key will have the value of the error message to display if submitted private key dosent match what's in the database record(this key is required but value can be empty).
-	'is_active' array key which must bear similar name(without question marks) as its login condition key name in the above login constraint will have the value of the error message to display if the login condition fails(this key & value is required if its login condition is set above).
-	'successful_login' array key will have the value of the success message to display if login was successful (this key is required but value can be empty).
+	The above is the format of subarray the $langs holds. Where, <br/>
+	'users' is the name of the specific login constraint you're setting the languages for.<br/>
+	'error' array key will have the value of the error message to display if form http request is not post(this key & value is required).<br/>
+	'incorrect_default' array key will have the value of the default error message to display if that of public and private key is not set(this key is required but value can be empty).<br/>
+	'incorrect_pubKey' array key will have the value of the error message to display if submitted public key dosent match what's in the database record(this key is required but value can be empty).<br/>
+	'incorrect_pvtKey' array key will have the value of the error message to display if submitted private key dosent match what's in the database record(this key is required but value can be empty).<br/>
+	'is_active' array key which must bear similar name(without question marks) as its login condition key name in the above login constraint will have the value of the error message to display if the login condition fails(this key & value is required if its login condition is set above).<br/>
+	'successful_login' array key will have the value of the success message to display if login was successful (this key is required but value can be empty).<br/>
 	***Note:*** the {value} seen in 'incorrect_pubKey' & 'incorrect_pvtKey' will be replaced by whatever is before the pipe sign(|) when the message is displayed.
 	
 - **$callbacks** 
@@ -89,11 +89,11 @@ Lightweight & easy to use codeigniter 4 authentication module
 		],
 	],
 	````
-	The above is the format of subarray the $callbacks holds. Where, 
-	'users' is the name of the specific login constraint you're setting the callbacks for.
-	'pages' array key is another array with 'success' and 'error' which holds the value of success and error pages your auth will redirect to on auth-error or auth-success(values for 'error' and 'success' key can be left empty).
-	'functions' array key is another array with 'success' and 'error' which holds the value of success and error functions your auth will call on auth-error or auth-success(values for 'error' and 'success' key can be left empty).
-				this function success and error value must be registered as an event in AuthMe/modules/Auth_me/Config/Events.php.
+	The above is the format of subarray the $callbacks holds. Where, <br/>
+	'users' is the name of the specific login constraint you're setting the callbacks for.<br/>
+	'pages' array key is another array with 'success' and 'error' which holds the value of success and error pages your auth will redirect to on auth-error or auth-success(values for 'error' and 'success' key can be left empty).<br/>
+	'functions' array key is another array with 'success' and 'error' which holds the value of success and error functions your auth will call on auth-error or auth-success(values for 'error' and 'success' key can be left empty).<br/>
+				this function success and error value must be registered as an event in AuthMe/modules/Auth_me/Config/Events.php.<br/>
 				
 - **$logout** 
    This contains multidimensional array of actions each constraints will use for logout. eg: for users logout,
@@ -109,20 +109,20 @@ Lightweight & easy to use codeigniter 4 authentication module
 		],
 	],
 	````
-	The above is the format of subarray the $logout holds. Where, 
-	'users' is the name of the specific login constraint you're setting the logout action for.
-	'page' array key is another array with 'success' which holds the value of success pages your auth will redirect to on logout (value for 'success' key can be left empty).
-	'function' array key is another array with 'success' which holds value of the function your auth will call on logout(value for 'success' key can be left empty).
-				this function success value must be registered as an event in AuthMe/modules/Auth_me/Config/Events.php.
+	The above is the format of subarray the $logout holds. Where, <br/>
+	'users' is the name of the specific login constraint you're setting the logout action for.<br/>
+	'page' array key is another array with 'success' which holds the value of success pages your auth will redirect to on logout (value for 'success' key can be left empty).<br/>
+	'function' array key is another array with 'success' which holds value of the function your auth will call on logout(value for 'success' key can be left empty).<br/>
+				this function success value must be registered as an event in AuthMe/modules/Auth_me/Config/Events.php.<br/>
 
 - **$sessionVar** 
    This contains keys and values of session variable name each constraints will use on successful login. eg: for users login,
 	````php
     'users' => 'users_data'
 	````
-	The above is the format of keys and values $sessionVar holds. Where, 
-	'users' array key is the name of the specific login constraint you're setting the session variable for which holds the session variable name($users_data in this case).
-	***Note:*** the session data created is the value of the login public_key so your public_key must be unique.
+	The above is the format of keys and values $sessionVar holds. Where, <br/>
+	'users' array key is the name of the specific login constraint you're setting the session variable for which holds the session variable name($users_data in this case).<br/>
+	***Note:*** the session data created is the value of the login public_key so your public_key must be unique.<br/>
 	
 ## Usage
  When you are through with all configurations, your login form should look like this:
