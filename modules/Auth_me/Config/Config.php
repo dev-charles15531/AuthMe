@@ -88,17 +88,6 @@ class Config extends BaseConfig {
                 'error'     => 'loginErrorFunction',
             ],
         ],
-
-        'logout' => [
-            'pages' => [
-                'success' => 'testlogin',
-            ],
-
-
-            'functions' => [
-                'success'   => 'logoutSuccessFunction',
-            ],
-        ],
     ];
 
 

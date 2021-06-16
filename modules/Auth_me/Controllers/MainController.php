@@ -19,7 +19,7 @@ class MainController extends Controller
 	 * 		   request type and form inputs are collected and stored in a temporary session for later use by processor class
 	 * 		   Login begins processing by AuthGate library [Authentication genesis]
 	 */
-	public function login()
+	public function login($passer = null)
 	{
 		helper(['session']);	// Session helper
         $session = \Config\Services::session();	// Load session service.
@@ -35,7 +35,7 @@ class MainController extends Controller
 
 		# Load AuthGate library and call its penetrate method for login
 		$Auth = new AuthGate();
-		$Auth->penetrate('login');
+		$Auth->penetrate('login', $passer);
 	}
 
 	
