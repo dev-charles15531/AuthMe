@@ -1,7 +1,7 @@
 # AuthMe
 Lightweight & easy to use codeigniter 4 authentication module
 
-![License](https://img.shields.io/github/license/dev-charles15531/AuthMe) ![version](https://img.shields.io/github/v/release/dev-charles15531/AuthMe) ![version](https://img.shields.io/github/size/dev-charles15531/AuthMe)
+![License](https://img.shields.io/github/license/dev-charles15531/AuthMe) ![version](https://img.shields.io/github/v/release/dev-charles15531/AuthMe) 
 
 > This module let you perform login | logout authentication with custom configurations in your codeigniter 4 application.
 
