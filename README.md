@@ -18,11 +18,11 @@ Lightweight & easy to use codeigniter 4 authentication module
 ## Installation 
  Download or clone this repository, edit app/Config/Autoload.php and add the Modules\AuthMe namespace to the $psr4 array. i.e, if this repo was downloaded in app/:<br/>
     ````php
-    $psr4 = [
-        'Config'      => APPPATH . 'Config',
-        APP_NAMESPACE => APPPATH,
-        'App'         => APPPATH,
-        'Modules\AuthMe'  => APPPATH .'AuthMe/modules/Auth_me',
+    $psr4 = [<br/>
+        'Config'      => APPPATH . 'Config',<br/>
+        APP_NAMESPACE => APPPATH,<br/>
+        'App'         => APPPATH,<br/>
+        'Modules\AuthMe'  => APPPATH .'AuthMe/modules/Auth_me',<br/>
     ];
 	````
 
